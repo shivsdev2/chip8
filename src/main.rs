@@ -1,7 +1,7 @@
 use c8::{HEIGHT, RAM_SIZE, WIDTH};
 use minifb::{Key, Scale, Window, WindowOptions};
 use rodio::{source::SineWave, OutputStream, Sink, Source};
-use std::{env, fs, time::Duration};
+use std::{env, fs};
 
 mod c8;
 
@@ -43,7 +43,7 @@ fn main() {
     .expect("Unable to open a Window");
 
     // One loop iteration = one 60 Hz frame
-    window.limit_update_rate(Some(Duration::from_micros(16_667)));
+    window.set_target_fps(60);
 
     while window.is_open() && !window.is_key_down(Key::Escape) && (c8.pc as usize) < RAM_SIZE {
         // Keypad: 1 2 3 4 / Q W E R / A S D F / Z X C V
