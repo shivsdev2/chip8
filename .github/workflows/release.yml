@@ -27,7 +27,7 @@ jobs:
       - name: Package
         run: |
           mkdir dist
-          cp target/release/chip8 README.txt dist/
+          cp target/release/chip8 README* dist/
           tar -czf chip8-linux-x86_64.tar.gz -C dist .
 
       - name: Upload to release
